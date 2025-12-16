@@ -74,7 +74,7 @@ const Men: React.FC<MenProps> = ({ onNavigate }) => {
                             <div className="absolute -top-20 -right-20 w-48 h-48 bg-sacred-gold/20 rounded-full blur-3xl"></div>
                             
                             <h3 className="font-serif text-3xl lg:text-4xl text-sacred-cream mb-2 lg:mb-4">Rejoindre le Groupe</h3>
-                            <p className="text-sacred-cream/70 text-base lg:text-lg mb-6 lg:mb-10">Prochaine rencontre : "L'Authenticité" - Octobre 2024</p>
+                            <p className="text-sacred-cream/70 text-base lg:text-lg mb-6 lg:mb-10">Prochaine rencontre : "L'Authenticité" - Décembre 2025</p>
                             
                             <div className="space-y-4 lg:space-y-6 mb-8 lg:mb-12">
                                 <div className="flex justify-between items-center text-base lg:text-lg border-b border-white/10 pb-2 lg:pb-4">

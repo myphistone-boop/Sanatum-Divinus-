@@ -83,7 +83,7 @@ const BookingView: React.FC<BookingViewProps> = ({
                           </div>
                           <div className="flex items-center gap-3">
                               <CalendarIcon size={20} className="text-gray-400" />
-                              <span>Octobre 2024</span>
+                              <span>Décembre 2025</span>
                           </div>
                       </div>
 

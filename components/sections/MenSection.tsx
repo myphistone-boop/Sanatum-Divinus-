@@ -12,7 +12,7 @@ const MenSection: React.FC<MenSectionProps> = ({ onNavigate }) => {
     <section className="relative min-h-[60vh] lg:min-h-[70vh] py-16 lg:py-20 bg-[#1a2b22] overflow-hidden flex flex-col justify-center">
          {/* Background Subtle Text */}
          <div className="absolute top-20 left-10 text-[6rem] md:text-[8rem] lg:text-[12rem] xl:text-[15rem] font-serif font-bold text-white/[0.02] pointer-events-none select-none leading-none">
-             MEN
+             
          </div>
 
          <div className="max-w-[100rem] mx-auto px-6 lg:px-8 w-full relative z-10">
@@ -23,7 +23,7 @@ const MenSection: React.FC<MenSectionProps> = ({ onNavigate }) => {
                 <div className="relative w-full h-[250px] md:h-[300px] lg:h-[350px] rounded-[2rem] lg:rounded-[3rem] overflow-hidden border-2 border-sacred-gold/40 shadow-[0_0_80px_rgba(217,185,94,0.15)] group">
                     <div className="absolute inset-0 bg-sacred-green-dark/20 group-hover:bg-transparent transition-colors duration-700 z-10"></div>
                     <img 
-                        src="https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" 
+                        src="https://storage.googleapis.com/novelec_assets/istockphoto-2094528663-612x612.jpg" 
                         alt="Cercle d'Hommes" 
                         className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-[3s] filter sepia-[0.3] contrast-110"
                     />
@@ -31,7 +31,7 @@ const MenSection: React.FC<MenSectionProps> = ({ onNavigate }) => {
                     {/* Floating Badge on Image */}
                     <div className="absolute bottom-4 left-4 lg:bottom-8 lg:left-8 bg-sacred-gold/90 text-sacred-green-dark backdrop-blur-md px-4 py-2 lg:px-8 lg:py-4 rounded-full uppercase tracking-[0.2em] font-bold text-[10px] lg:text-sm z-20 shadow-lg flex items-center gap-2 lg:gap-3">
                         <MessageCircle size={14} className="lg:w-[18px] lg:h-[18px]" />
-                        <span>Cercle de Parole • Octobre 2024</span>
+                        <span>Cercle de Parole • Décembre 2025</span>
                     </div>
                 </div>
 

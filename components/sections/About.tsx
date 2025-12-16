@@ -44,7 +44,7 @@ const About: React.FC = () => {
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 mb-8 lg:mb-10">
                          <p className="text-base lg:text-lg xl:text-xl text-sacred-cream/80 font-light leading-loose text-justify">
-                            Formé aux neurosciences cognitives à Paris puis initié aux traditions chamaniques en Amazonie péruvienne, 
+                            Formé aux neurosciences cognitives à Genève puis initié aux traditions chamaniques en Amazonie péruvienne, 
                             je crée un pont unique entre la rigueur scientifique occidentale et le mystère du sacré. 
                             Mon parcours m'a mené des temples silencieux d'Asie aux laboratoires de recherche sur la conscience.
                         </p>

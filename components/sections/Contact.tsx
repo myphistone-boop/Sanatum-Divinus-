@@ -46,7 +46,7 @@ const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
                                     <div>
                                         <span className="text-xs uppercase tracking-widest text-sacred-cream/40 font-bold block mb-1">Le Cabinet</span>
                                         <p className="text-2xl font-bold text-sacred-cream font-serif">12 Rue des Archives</p>
-                                        <p className="text-sacred-cream/60 font-light text-lg">75003 Paris, France</p>
+                                        <p className="text-sacred-cream/60 font-light text-lg">1201 Genève, Suisse</p>
                                     </div>
                                 </div>
 
