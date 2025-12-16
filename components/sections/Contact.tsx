@@ -1,72 +1,139 @@
 import React from 'react';
-import BookingView from '../views/BookingView';
-import { Clock, Phone, Mail, MapPin } from 'lucide-react';
+import { Button } from '../ui/Button';
+import { Phone, Mail, MapPin, Calendar, Clock, ArrowRight } from 'lucide-react';
+import { View } from '../../types';
 
-const Contact: React.FC = () => {
+interface ContactProps {
+  onNavigate?: (view: View) => void;
+}
+
+const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
   return (
-       <section className="py-32 px-6 relative overflow-hidden bg-[#15231c]">
-         {/* Background Glows */}
-         <div className="absolute -left-40 top-1/2 transform -translate-y-1/2 w-[800px] h-[800px] bg-sacred-gold/5 rounded-full blur-[150px] pointer-events-none" />
+       <section className="py-24 px-6 relative overflow-hidden bg-[#121c17] border-t border-white/5">
+         {/* Background Elements */}
+         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-sacred-gold/20 to-transparent"></div>
+         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-sacred-green/10 rounded-full blur-[120px] pointer-events-none" />
          
-         <div className="max-w-[100rem] mx-auto relative z-10">
-            <div className="flex flex-col lg:flex-row items-stretch bg-white/5 border border-white/5 rounded-[4rem] overflow-hidden backdrop-blur-sm">
+         <div className="max-w-[90rem] mx-auto relative z-10">
+            
+            {/* Header Centré */}
+            <div className="text-center mb-16 lg:mb-20">
+                <span className="uppercase text-[10px] tracking-[0.4em] text-sacred-gold font-bold block mb-4">
+                    Le Lieu de Transformation
+                </span>
+                <h2 className="font-serif text-4xl lg:text-6xl text-sacred-cream">
+                    Entrer dans le <span className="text-sacred-gold italic">Cercle</span>
+                </h2>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-stretch">
                 
-                {/* Left: Contact Info & Text (Width 40%) */}
-                <div className="lg:w-2/5 p-12 lg:p-20 flex flex-col justify-between relative">
-                    <div className="absolute inset-0 bg-sacred-green-dark/80 -z-10"></div>
-                    
-                    <div>
-                        <div className="flex items-center gap-4 mb-8">
-                            <div className="w-16 h-[1px] bg-sacred-gold"></div>
-                            <span className="uppercase text-xs tracking-[0.3em] text-sacred-gold font-bold">Contact</span>
+                {/* COLONNE GAUCHE : CARTE DE CONTACT */}
+                <div className="flex flex-col h-full">
+                    <div className="bg-[#1A2B22]/60 backdrop-blur-md border border-white/5 p-10 lg:p-14 rounded-[2rem] h-full flex flex-col justify-between relative overflow-hidden group hover:border-sacred-gold/20 transition-all duration-500">
+                        {/* Decor */}
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-bl-full pointer-events-none"></div>
+
+                        <div>
+                            <h3 className="font-serif text-3xl text-sacred-cream mb-8">Informations</h3>
+                            
+                            <div className="space-y-8">
+                                {/* Address */}
+                                <div className="flex items-start gap-6 group/item">
+                                    <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-sacred-gold flex-shrink-0 group-hover/item:bg-sacred-gold group-hover/item:text-sacred-green-dark transition-all duration-300">
+                                        <MapPin size={20} />
+                                    </div>
+                                    <div>
+                                        <span className="text-xs uppercase tracking-widest text-sacred-cream/40 font-bold block mb-1">Le Cabinet</span>
+                                        <p className="text-xl text-sacred-cream font-serif">12 Rue des Archives</p>
+                                        <p className="text-sacred-cream/60 font-light">75003 Paris, France</p>
+                                    </div>
+                                </div>
+
+                                {/* Phone */}
+                                <div className="flex items-start gap-6 group/item">
+                                    <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-sacred-gold flex-shrink-0 group-hover/item:bg-sacred-gold group-hover/item:text-sacred-green-dark transition-all duration-300">
+                                        <Phone size={20} />
+                                    </div>
+                                    <div>
+                                        <span className="text-xs uppercase tracking-widest text-sacred-cream/40 font-bold block mb-1">Téléphone</span>
+                                        <p className="text-xl text-sacred-cream font-serif">+33 6 12 34 56 78</p>
+                                        <p className="text-sacred-cream/60 font-light">Du Lundi au Vendredi, 9h - 19h</p>
+                                    </div>
+                                </div>
+
+                                {/* Email */}
+                                <div className="flex items-start gap-6 group/item">
+                                    <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-sacred-gold flex-shrink-0 group-hover/item:bg-sacred-gold group-hover/item:text-sacred-green-dark transition-all duration-300">
+                                        <Mail size={20} />
+                                    </div>
+                                    <div>
+                                        <span className="text-xs uppercase tracking-widest text-sacred-cream/40 font-bold block mb-1">Email</span>
+                                        <p className="text-xl text-sacred-cream font-serif">contact@sanatum.com</p>
+                                        <p className="text-sacred-cream/60 font-light">Réponse sous 24h</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <h2 className="font-serif text-6xl md:text-7xl text-sacred-cream tracking-tight leading-[1.1] mb-10">
-                            Le Voyage <br/> <span className="text-sacred-gold italic">Commence Ici</span>
-                        </h2>
-                        
-                        <p className="text-sacred-cream text-xl leading-relaxed mb-12 border-l-2 border-white/10 pl-6 font-light">
-                            Il n'y a pas de hasard, seulement des rendez-vous. Si vous lisez ceci, c'est que l'appel a déjà été entendu.
-                            Prenez place.
-                        </p>
-                    </div>
-
-                    <div className="space-y-10">
-                        <div className="flex items-center gap-8 group cursor-pointer bg-white/5 p-6 rounded-3xl border border-transparent hover:border-sacred-gold/30 transition-all">
-                            <div className="w-16 h-16 rounded-full border border-sacred-gold/20 flex items-center justify-center text-sacred-gold group-hover:bg-sacred-gold group-hover:text-sacred-green-dark transition-colors duration-300 shadow-lg">
-                                <Phone size={24} />
-                            </div>
-                            <div>
-                                <h4 className="font-serif text-lg text-sacred-cream/60 mb-1">Téléphone</h4>
-                                <p className="text-sacred-cream text-2xl font-sans font-bold tracking-wide group-hover:text-sacred-gold transition-colors">+33 6 12 34 56 78</p>
-                            </div>
-                        </div>
-
-                        <div className="flex items-center gap-8 group cursor-pointer bg-white/5 p-6 rounded-3xl border border-transparent hover:border-sacred-gold/30 transition-all">
-                            <div className="w-16 h-16 rounded-full border border-sacred-gold/20 flex items-center justify-center text-sacred-gold group-hover:bg-sacred-gold group-hover:text-sacred-green-dark transition-colors duration-300 shadow-lg">
-                                <Mail size={24} />
-                            </div>
-                            <div>
-                                <h4 className="font-serif text-lg text-sacred-cream/60 mb-1">Email</h4>
-                                <p className="text-sacred-cream text-xl font-sans font-bold tracking-wide group-hover:text-sacred-gold transition-colors break-all">contact@sanatum-divinus.com</p>
-                            </div>
-                        </div>
-                         
-                         <div className="flex items-center gap-8 group cursor-pointer bg-white/5 p-6 rounded-3xl border border-transparent hover:border-sacred-gold/30 transition-all">
-                            <div className="w-16 h-16 rounded-full border border-sacred-gold/20 flex items-center justify-center text-sacred-gold group-hover:bg-sacred-gold group-hover:text-sacred-green-dark transition-colors duration-300 shadow-lg">
-                                <MapPin size={24} />
-                            </div>
-                            <div>
-                                <h4 className="font-serif text-lg text-sacred-cream/60 mb-1">Le Cabinet</h4>
-                                <p className="text-sacred-cream text-xl font-sans font-bold tracking-wide group-hover:text-sacred-gold transition-colors">12 Rue du Temple, 75003 Paris</p>
-                            </div>
+                        <div className="mt-12 pt-8 border-t border-white/5">
+                            <p className="text-sacred-cream/40 text-sm font-light italic">
+                                "Le premier pas vers la guérison est souvent le plus difficile. Nous sommes là pour vous guider."
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                {/* Right: Booking Widget (Width 60%) */}
-                <div className="lg:w-3/5 bg-white relative">
-                     <BookingView isEmbedded={true} />
+                {/* COLONNE DROITE : AGENDA / RÉSERVATION */}
+                <div className="flex flex-col h-full">
+                    <div className="bg-gradient-to-br from-[#D9B95E]/10 to-[#1A2B22]/80 backdrop-blur-md border border-sacred-gold/30 p-10 lg:p-14 rounded-[2rem] h-full relative overflow-hidden flex flex-col justify-center items-center text-center shadow-[0_0_50px_rgba(217,185,94,0.05)] group hover:shadow-[0_0_80px_rgba(217,185,94,0.1)] transition-shadow duration-500">
+                        
+                        {/* Background Effect */}
+                        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+                        
+                        <div className="relative z-10 w-full max-w-md">
+                            <div className="w-20 h-20 bg-sacred-gold rounded-full flex items-center justify-center text-sacred-green-dark mx-auto mb-8 shadow-[0_10px_30px_rgba(217,185,94,0.3)] animate-pulse-glow">
+                                <Calendar size={32} />
+                            </div>
+
+                            <h3 className="font-serif text-3xl lg:text-4xl text-sacred-cream mb-4">
+                                Prochaines Disponibilités
+                            </h3>
+                            
+                            <p className="text-sacred-cream/70 mb-8 font-light leading-relaxed">
+                                L'agenda se remplit rapidement. Réservez votre séance découverte ou votre place pour la prochaine immersion.
+                            </p>
+
+                            {/* Mockup de créneaux */}
+                            <div className="grid grid-cols-2 gap-4 mb-10 w-full">
+                                <div className="bg-sacred-green-dark/60 border border-sacred-gold/20 p-4 rounded-xl flex flex-col items-center">
+                                    <span className="text-sacred-gold font-bold text-sm uppercase">Octobre</span>
+                                    <span className="text-2xl text-white font-serif my-1">14</span>
+                                    <span className="text-xs text-white/50">Lundi</span>
+                                </div>
+                                <div className="bg-sacred-green-dark/60 border border-sacred-gold/20 p-4 rounded-xl flex flex-col items-center">
+                                    <span className="text-sacred-gold font-bold text-sm uppercase">Octobre</span>
+                                    <span className="text-2xl text-white font-serif my-1">16</span>
+                                    <span className="text-xs text-white/50">Mercredi</span>
+                                </div>
+                            </div>
+
+                            {onNavigate && (
+                                <Button 
+                                    onClick={() => onNavigate(View.BOOKING)}
+                                    className="w-full flex items-center justify-center gap-3 py-5 text-sm uppercase tracking-widest"
+                                >
+                                    <span>Accéder à l'Agenda</span>
+                                    <ArrowRight size={16} />
+                                </Button>
+                            )}
+
+                            <div className="mt-6 flex items-center justify-center gap-2 text-sacred-gold/60 text-xs">
+                                <Clock size={12} />
+                                <span>Créneaux mis à jour en temps réel</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>

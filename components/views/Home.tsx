@@ -22,7 +22,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       <Testimonials />
       <Pricing onNavigate={onNavigate} />
       <About />
-      <Contact />
+      <Contact onNavigate={onNavigate} />
 
       {/* --- FOOTER --- */}
       <footer className="border-t border-white/5 bg-[#131f19] py-24 px-8">
