@@ -47,13 +47,13 @@ const BackgroundCanvas: React.FC = () => {
     window.addEventListener('resize', resize);
     resize();
 
-    // Halos definitions
+    // Halos definitions - Opacity slightly increased to pop against lighter background
     const halos = [
       {
         x: width * 0.2,
         y: height * 0.3,
         radius: 600,
-        color: 'rgba(217, 185, 94, 0.08)', // Gold
+        color: 'rgba(217, 185, 94, 0.12)', // Gold - increased opacity
         vx: 0.1,
         vy: 0.05,
         phase: 0
@@ -62,7 +62,7 @@ const BackgroundCanvas: React.FC = () => {
         x: width * 0.8,
         y: height * 0.7,
         radius: 700,
-        color: 'rgba(56, 189, 248, 0.1)', // Cyan
+        color: 'rgba(56, 189, 248, 0.15)', // Cyan - increased opacity
         vx: -0.08,
         vy: -0.05,
         phase: 2
@@ -71,7 +71,7 @@ const BackgroundCanvas: React.FC = () => {
         x: width * 0.5,
         y: height * 0.5,
         radius: 800,
-        color: 'rgba(167, 139, 250, 0.08)', // Violet
+        color: 'rgba(167, 139, 250, 0.12)', // Violet - increased opacity
         vx: 0.05,
         vy: -0.02,
         phase: 4
@@ -80,19 +80,24 @@ const BackgroundCanvas: React.FC = () => {
 
     const animate = () => {
       // 1. Draw Background Gradient
+      // SIGNIFICANT CHANGE: Increased base RGB values to create a lighter, "forest dawn" atmosphere
+      // instead of "deep midnight".
       const time = Date.now() * 0.0002;
       
-      const r1 = Math.floor(15 + Math.sin(time) * 10);
-      const g1 = Math.floor(23 + Math.sin(time * 0.5) * 5);
-      const b1 = Math.floor(42 + Math.cos(time) * 10);
+      // Top color: Lighter warm green/teal
+      const r1 = Math.floor(35 + Math.sin(time) * 10);
+      const g1 = Math.floor(60 + Math.sin(time * 0.5) * 15);
+      const b1 = Math.floor(55 + Math.cos(time) * 10);
       
-      const r2 = Math.floor(30 + Math.cos(time * 0.7) * 5);
-      const g2 = Math.floor(51 + Math.sin(time * 0.3) * 10);
-      const b2 = Math.floor(40 + Math.cos(time * 0.8) * 5);
+      // Bottom color: Richer, slightly brighter green
+      const r2 = Math.floor(45 + Math.cos(time * 0.7) * 10);
+      const g2 = Math.floor(75 + Math.sin(time * 0.3) * 15);
+      const b2 = Math.floor(65 + Math.cos(time * 0.8) * 10);
 
       const gradient = ctx.createLinearGradient(0, 0, width, height);
       gradient.addColorStop(0, `rgb(${r1}, ${g1}, ${b1})`);
-      gradient.addColorStop(0.5, '#1e293b');
+      // Midpoint is now a visible moss/slate green instead of dark slate
+      gradient.addColorStop(0.5, '#354f46'); 
       gradient.addColorStop(1, `rgb(${r2}, ${g2}, ${b2})`);
 
       ctx.fillStyle = gradient;
@@ -116,9 +121,10 @@ const BackgroundCanvas: React.FC = () => {
       });
 
       // 3. Draw Static Stars (Galaxy effect)
-      ctx.fillStyle = '#FFF9EC'; // Sacred Cream color for stars
+      // Slightly more opaque stars to compete with lighter background
+      ctx.fillStyle = '#FFF9EC'; 
       starsRef.current.forEach(star => {
-        ctx.globalAlpha = star.opacity;
+        ctx.globalAlpha = star.opacity * 0.8; // Adjusted opacity
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
         ctx.fill();

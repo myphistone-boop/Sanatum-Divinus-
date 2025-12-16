@@ -27,7 +27,7 @@ const Orrery: React.FC = () => {
   ];
 
   return (
-    <div className="relative w-[1100px] h-[1100px] flex items-center justify-center pointer-events-none select-none scale-75 md:scale-90">
+    <div className="relative w-[1100px] h-[1100px] flex items-center justify-center pointer-events-none select-none">
       
       {/* Deep Center Glow - The Core - EXPANDED */}
       <div className="absolute w-[600px] h-[600px] bg-sacred-gold rounded-full blur-[150px] opacity-15 animate-pulse-glow" />
