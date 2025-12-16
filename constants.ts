@@ -7,7 +7,7 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Réservation', view: View.BOOKING },
 ];
 
-export const LOGO_URL = "https://storage.googleapis.com/novelec_assets/Sanatum%20Divinus_V2.png"; // Hosting the provided logo logic or using the logic from the prompt context
+export const LOGO_URL = "https://storage.googleapis.com/novelec_assets/Sanatum%20Divinus.png"; // Hosting the provided logo logic or using the logic from the prompt context
 
 export const COLORS = {
   GOLD: '#D9B95E',
