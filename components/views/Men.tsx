@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View } from '../../types';
 import { Button } from '../ui/Button';
-import { Shield, Users, Flame } from 'lucide-react';
+import { Shield, Users, Flame, Crown } from 'lucide-react';
 
 interface MenProps {
     onNavigate: (view: View) => void;
@@ -51,14 +51,15 @@ const Men: React.FC<MenProps> = ({ onNavigate }) => {
                             "On ne naît pas homme, on le devient par l'épreuve, la fraternité et la conscience."
                         </blockquote>
 
-                        <h3 className="font-serif text-4xl lg:text-5xl text-sacred-cream pt-6 lg:pt-10">Les Piliers du Cercle</h3>
+                        <h3 className="font-serif text-4xl lg:text-5xl text-sacred-cream pt-6 lg:pt-10 mb-8">Les Piliers du Cercle</h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 not-prose">
                             {[
                                 { icon: <Shield size={32} />, title: "Protection & Force", text: "Développer une puissance saine, au service de soi et des autres." },
                                 { icon: <Users size={32} />, title: "Fraternité", text: "Rompre l'isolement. Trouver des frères d'armes sur le chemin spirituel." },
                                 { icon: <Flame size={32} />, title: "Alchimie Intérieure", text: "Transmuter la colère en créativité, la peur en courage." },
+                                { icon: <Crown size={32} />, title: "Souveraineté & Vision", text: "Incarner sa propre loi, définir sa mission et laisser un héritage." },
                             ].map((val, i) => (
-                                <div key={i} className="bg-white/5 p-6 lg:p-10 rounded-[2rem] border-2 border-white/5 hover:border-sacred-gold/30 transition-colors">
+                                <div key={i} className="bg-white/5 p-6 lg:p-10 rounded-[2rem] border-2 border-white/5 hover:border-sacred-gold/30 transition-colors h-full flex flex-col">
                                     <div className="text-sacred-gold mb-4 lg:mb-6">{val.icon}</div>
                                     <h4 className="font-serif text-2xl lg:text-3xl text-sacred-cream mb-2 lg:mb-4">{val.title}</h4>
                                     <p className="text-base lg:text-lg text-sacred-cream/70 leading-relaxed">{val.text}</p>

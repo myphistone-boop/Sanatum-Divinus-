@@ -16,7 +16,8 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
   }, []);
 
   return (
-    <section className="min-h-screen w-full flex flex-col lg:flex-row items-center relative overflow-hidden pt-28 md:pt-32 lg:pt-24 xl:pt-28">
+    // Reduced top padding: pt-20 instead of pt-28/32
+    <section className="min-h-screen w-full flex flex-col lg:flex-row items-center relative overflow-hidden pt-20 md:pt-24 lg:pt-20 xl:pt-24">
         {/* Left Content */}
         <div className={`
             flex-1 h-full flex flex-col justify-center items-start px-6 md:px-12 lg:px-16 xl:px-24 z-20 
@@ -34,7 +35,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               <span className="text-[10px] md:text-[10px] lg:text-xs uppercase tracking-[0.25em] text-sacred-gold font-bold">Holistique Premium</span>
             </div>
 
-            {/* Typography adjustments: Significantly reduced for laptops (lg) to avoid "zoomed in" feel */}
+            {/* Typography adjustments */}
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl text-sacred-cream leading-[0.95] tracking-tight mb-6 md:mb-8 lg:mb-10 drop-shadow-2xl">
               L'Éveil de la <br />
               <span className="text-sacred-gold relative inline-block italic pr-4 lg:pr-8">
@@ -59,20 +60,12 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           </div>
         </div>
 
-        {/* Right Content - SCALED UP SIGNIFICANTLY */}
+        {/* Right Content */}
         <div className={`
             flex-1 h-full flex items-center justify-center relative z-10 mt-0 lg:mt-0
             transition-all duration-1000 delay-300 ease-out transform
             ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}
           `}>
-          {/* 
-             Grand Scale Orrery:
-             Mobile: 0.45 (Visible)
-             Tablet: 0.6
-             Laptop (lg): 0.75 (Much larger than before)
-             Desktop (xl): 0.85
-             Large Screen (2xl): 1.0
-          */}
           <div className="transform scale-[0.45] md:scale-[0.6] lg:scale-[0.75] xl:scale-[0.85] 2xl:scale-[1.0] origin-center lg:translate-x-10 hover:scale-[0.5] md:hover:scale-[0.65] lg:hover:scale-[0.8] xl:hover:scale-[0.9] transition-transform duration-[2s]">
              <Orrery />
           </div>

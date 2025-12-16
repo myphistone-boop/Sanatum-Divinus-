@@ -45,8 +45,8 @@ const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
                                     </div>
                                     <div>
                                         <span className="text-xs uppercase tracking-widest text-sacred-cream/40 font-bold block mb-1">Le Cabinet</span>
-                                        <p className="text-xl text-sacred-cream font-serif">12 Rue des Archives</p>
-                                        <p className="text-sacred-cream/60 font-light">75003 Paris, France</p>
+                                        <p className="text-2xl font-bold text-sacred-cream font-serif">12 Rue des Archives</p>
+                                        <p className="text-sacred-cream/60 font-light text-lg">75003 Paris, France</p>
                                     </div>
                                 </div>
 
@@ -57,8 +57,8 @@ const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
                                     </div>
                                     <div>
                                         <span className="text-xs uppercase tracking-widest text-sacred-cream/40 font-bold block mb-1">Téléphone</span>
-                                        <p className="text-xl text-sacred-cream font-serif">+33 6 12 34 56 78</p>
-                                        <p className="text-sacred-cream/60 font-light">Du Lundi au Vendredi, 9h - 19h</p>
+                                        <p className="text-2xl font-bold text-sacred-cream font-serif">+33 6 12 34 56 78</p>
+                                        <p className="text-sacred-cream/60 font-light text-lg">Du Lundi au Vendredi, 9h - 19h</p>
                                     </div>
                                 </div>
 
@@ -69,8 +69,8 @@ const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
                                     </div>
                                     <div>
                                         <span className="text-xs uppercase tracking-widest text-sacred-cream/40 font-bold block mb-1">Email</span>
-                                        <p className="text-xl text-sacred-cream font-serif">contact@sanatum.com</p>
-                                        <p className="text-sacred-cream/60 font-light">Réponse sous 24h</p>
+                                        <p className="text-2xl font-bold text-sacred-cream font-serif">contact@sanatum.com</p>
+                                        <p className="text-sacred-cream/60 font-light text-lg">Réponse sous 24h</p>
                                     </div>
                                 </div>
                             </div>

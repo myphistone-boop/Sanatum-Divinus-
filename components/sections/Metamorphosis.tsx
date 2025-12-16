@@ -47,7 +47,8 @@ const Metamorphosis: React.FC<MetamorphosisProps> = ({ onNavigate }) => {
   ];
 
   return (
-      <section className="py-16 md:py-20 lg:py-24 px-6 relative z-10 overflow-hidden">
+      // Reduced top padding: pt-10 instead of py-16
+      <section className="pt-10 pb-20 px-6 relative z-10 overflow-hidden">
         <div className="max-w-[100rem] mx-auto">
             <div className="text-center mb-10 lg:mb-12">
                 <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-sacred-cream mb-4">Les Clés de la <span className="text-sacred-gold italic">Métamorphose</span></h2>
