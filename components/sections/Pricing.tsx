@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '../ui/Button';
-import { ArrowLeft, Sparkles, CheckCircle, Leaf, Gem, Crown } from 'lucide-react';
+import { ArrowLeft, Sparkles, CheckCircle, Clock, Gem, Infinity } from 'lucide-react';
 import { View } from '../../types';
 
 interface PricingProps {
@@ -13,51 +13,51 @@ const Pricing: React.FC<PricingProps> = ({ onNavigate }) => {
   const pricingOptions = [
     {
       id: 0,
-      title: "Initiation",
-      price: "150€",
-      period: "/séance",
-      desc: "La porte d'entrée.",
-      longDesc: "Une séance unique pour clarifier une problématique précise ou découvrir l'approche. C'est le premier pas vers votre vérité intérieure, un moment de clarté fulgurante.",
+      title: "Séance Unitaire",
+      price: "60.-",
+      period: "/1 heure",
+      desc: "Découverte & Clarté.",
+      longDesc: "Une séance ponctuelle pour découvrir l'approche thérapeutique ou traiter une question spécifique. C'est un espace de parole libre et de soin pour retrouver de la clarté immédiate.",
       includes: [
-        "Consultation 1h30",
-        "Anamnèse complète",
-        "Soin découverte",
-        "Compte-rendu oral"
+        "Consultation 1h",
+        "Écoute active & Soin",
+        "Outils pratiques",
+        "Sans engagement"
       ],
-      icon: <Leaf className="w-5 h-5 lg:w-6 lg:h-6" />
+      icon: <Clock className="w-5 h-5 lg:w-6 lg:h-6" />
     },
     {
       id: 1,
-      title: "Métamorphose",
-      price: "550€",
-      period: "/mois",
-      tag: "Recommandé",
-      desc: "La transformation.",
-      longDesc: "Un accompagnement complet sur un mois pour opérer un changement profond et durable. Idéal pour traverser une transition de vie majeure ou dissoudre des blocages anciens.",
+      title: "Parcours Évolution",
+      price: "250.-",
+      period: "/5 heures",
+      tag: "Populaire",
+      desc: "L'approfondissement.",
+      longDesc: "Un pack de 5 heures pour engager un travail de fond. Idéal pour instaurer de nouvelles habitudes, traverser une période de transition et ancrer le changement dans la durée.",
       includes: [
-        "4 Séances (1h30/semaine)",
-        "Bilan Énergétique Bio-Résonance",
-        "2 Séances Hypnose Régressive",
-        "Suivi WhatsApp illimité 7j/7",
-        "Exercices personnalisés"
+        "5 Heures de consultation",
+        "Suivi personnalisé",
+        "Exercices inter-séances",
+        "Priorité de réservation",
+        "Bilan intermédiaire"
       ],
       icon: <Gem className="w-5 h-5 lg:w-6 lg:h-6" />
     },
     {
       id: 2,
-      title: "Transcendance",
-      price: "1200€",
-      period: "/3 jours",
-      desc: "L'immersion.",
-      longDesc: "Retraite individuelle en nature pour une déconnexion totale et une reconnexion à l'essentiel. Une parenthèse hors du temps pour renaître à soi-même.",
+      title: "Transformation",
+      price: "500.-",
+      period: "/10 heures",
+      desc: "L'engagement total.",
+      longDesc: "Un accompagnement complet de 10 heures pour une métamorphose profonde. Ce format permet d'explorer toutes les facettes de votre être et de stabiliser durablement votre bien-être.",
       includes: [
-        "Hébergement & Repas Bio",
-        "Soins quotidiens intensifs (4h/jour)",
-        "Cérémonie du Feu & Rituels",
-        "Marche consciente en forêt",
-        "Intégration post-séjour (1h)"
+        "10 Heures de consultation",
+        "Accès à toutes les thérapies",
+        "Support WhatsApp 5j/7",
+        "Bilan énergétique offert",
+        "Plan d'autonomie final"
       ],
-      icon: <Crown className="w-5 h-5 lg:w-6 lg:h-6" />
+      icon: <Infinity className="w-5 h-5 lg:w-6 lg:h-6" />
     }
   ];
 
@@ -104,7 +104,7 @@ const Pricing: React.FC<PricingProps> = ({ onNavigate }) => {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-6">
                                 <div className="flex flex-col justify-between">
                                     <div>
-                                        <span className="uppercase text-[10px] lg:text-xs tracking-[0.2em] text-sacred-gold font-bold mb-3 block">L'expérience</span>
+                                        <span className="uppercase text-[10px] lg:text-xs tracking-[0.2em] text-sacred-gold font-bold mb-3 block">Le Forfait</span>
                                         <p className="text-sm lg:text-base xl:text-lg text-sacred-cream/90 font-light leading-relaxed mb-4 text-justify">
                                             {pricingOptions[activePrice].longDesc}
                                         </p>
@@ -117,7 +117,7 @@ const Pricing: React.FC<PricingProps> = ({ onNavigate }) => {
                                 </div>
 
                                 <div className="bg-white/[0.02] rounded-[1.5rem] lg:rounded-[2rem] p-5 lg:p-6 border border-white/5 h-full">
-                                    <span className="uppercase text-[10px] lg:text-xs tracking-[0.2em] text-sacred-gold font-bold mb-3 lg:mb-5 block border-b border-white/5 pb-2">Inclusions Exclusives</span>
+                                    <span className="uppercase text-[10px] lg:text-xs tracking-[0.2em] text-sacred-gold font-bold mb-3 lg:mb-5 block border-b border-white/5 pb-2">Ce qui est inclus</span>
                                     <ul className="space-y-2 lg:space-y-3">
                                         {pricingOptions[activePrice].includes.map((inc, i) => (
                                             <li key={i} className="flex items-center gap-3 group">
@@ -133,7 +133,7 @@ const Pricing: React.FC<PricingProps> = ({ onNavigate }) => {
 
                             {/* Footer Action Section */}
                             <div className="pt-2 flex items-center justify-between">
-                                <span className="text-sacred-cream/30 text-[9px] lg:text-xs uppercase tracking-widest hidden md:inline-block">Places limitées par mois</span>
+                                <span className="text-sacred-cream/30 text-[9px] lg:text-xs uppercase tracking-widest hidden md:inline-block">Tarif horaire moyen : 60.-</span>
                                 <Button className="w-full md:w-auto px-8 lg:px-10 py-3 lg:py-4 shadow-[0_10px_30px_rgba(217,185,94,0.15)] hover:shadow-[0_20px_50px_rgba(217,185,94,0.3)] text-xs lg:text-sm" onClick={() => onNavigate(View.BOOKING)}>
                                     Choisir {pricingOptions[activePrice].title}
                                 </Button>

@@ -4,7 +4,7 @@ import { Star, Quote } from 'lucide-react';
 const Testimonials: React.FC = () => {
   const testimonials = [
       { name: "Sophie L.", role: "Entrepreneur", text: "Je ne pensais pas qu'une seule séance pouvait autant changer ma perception de moi-même. Une révélation." },
-      { name: "Marc D.", role: "Architecte", text: "Le cercle d'hommes m'a redonné une force que j'avais oubliée. Une fraternité indispensable." },
+      { name: "Marc D.", role: "Architecte", text: "Le groupe d'hommes m'a permis de m'ouvrir comme jamais auparavant. Une fraternité douce et indispensable." },
       { name: "Elodie P.", role: "Artiste", text: "La bio-résonance a débloqué ma créativité de manière spectaculaire. Je recommande les yeux fermés." },
       { name: "Thomas V.", role: "Sportif", text: "L'ancrage somatique m'a permis de gérer mon stress avant les compétitions. Merci Alexandre." },
       { name: "Camille R.", role: "Thérapeute", text: "Une approche d'une justesse incroyable. Alexandre incarne ce qu'il enseigne." },
@@ -14,7 +14,7 @@ const Testimonials: React.FC = () => {
   return (
       <section className="py-32 relative overflow-hidden bg-sacred-green-dark/30">
         <div className="text-center mb-16 relative z-10 px-6">
-            <h2 className="font-serif text-5xl md:text-6xl text-sacred-cream mb-4">Échos de la <span className="text-sacred-gold italic">Tribu</span></h2>
+            <h2 className="font-serif text-5xl md:text-6xl text-sacred-cream mb-4">Échos des <span className="text-sacred-gold italic">Âmes Soignées</span></h2>
         </div>
 
         {/* Marquee Container */}

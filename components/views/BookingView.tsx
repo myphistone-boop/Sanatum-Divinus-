@@ -75,7 +75,7 @@ const BookingView: React.FC<BookingViewProps> = ({
                       <div className="space-y-4 text-gray-600 font-sans font-medium">
                           <div className="flex items-center gap-3">
                               <Clock size={20} className="text-gray-400" />
-                              <span>45 min</span>
+                              <span>1 heure</span>
                           </div>
                           <div className="flex items-center gap-3">
                               <Globe size={20} className="text-gray-400" />
@@ -93,7 +93,7 @@ const BookingView: React.FC<BookingViewProps> = ({
                       
                       <div className="mt-auto pt-8">
                            <div className="text-xs font-bold text-sacred-gold uppercase tracking-widest">Prix</div>
-                           <div className="text-2xl font-bold">150.00€</div>
+                           <div className="text-2xl font-bold">60.-</div>
                       </div>
                   </div>
               )}
