@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import BackgroundCanvas from './components/BackgroundCanvas';
 import Home from './components/views/Home';
-import Discover from './components/views/Discover';
 import Men from './components/views/Men';
+import Discover from './components/views/Discover';
 import BookingView from './components/views/BookingView';
 import { View } from './types';
 
@@ -18,8 +18,8 @@ const App: React.FC = () => {
       
       <main className="transition-opacity duration-500 ease-in-out">
         {currentView === View.HOME && <Home onNavigate={setCurrentView} />}
-        {currentView === View.DISCOVER && <Discover onNavigate={setCurrentView} />}
         {currentView === View.MEN && <Men onNavigate={setCurrentView} />}
+        {currentView === View.DISCOVER && <Discover onNavigate={setCurrentView} />}
         {currentView === View.BOOKING && <BookingView onNavigate={setCurrentView} />}
       </main>
     </div>

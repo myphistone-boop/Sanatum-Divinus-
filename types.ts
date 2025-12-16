@@ -2,15 +2,15 @@ import React from 'react';
 
 export enum View {
   HOME = 'HOME',
-  DISCOVER = 'DISCOVER',
   MEN = 'MEN',
-  ABOUT = 'ABOUT',
+  DISCOVER = 'DISCOVER',
   BOOKING = 'BOOKING'
 }
 
 export interface NavItem {
   label: string;
   view: View;
+  sectionId?: string; // ID pour le scroll automatique
 }
 
 export interface Service {

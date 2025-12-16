@@ -3,11 +3,11 @@ import { View } from '../../types';
 import { LOGO_URL } from '../../constants';
 import Hero from '../sections/Hero';
 import Metamorphosis from '../sections/Metamorphosis';
-import MenSection from '../sections/MenSection';
 import Testimonials from '../sections/Testimonials';
 import Pricing from '../sections/Pricing';
 import About from '../sections/About';
 import Contact from '../sections/Contact';
+import DiscoverSection from '../sections/DiscoverSection';
 
 interface HomeProps {
   onNavigate: (view: View) => void;
@@ -17,12 +17,26 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
   return (
     <div className="w-full relative">
       <Hero onNavigate={onNavigate} />
-      <Metamorphosis onNavigate={onNavigate} />
-      <MenSection onNavigate={onNavigate} />
-      <Testimonials />
-      <Pricing onNavigate={onNavigate} />
+      
+      {/* 2. Discover (2x3 grid) */}
+      <DiscoverSection onNavigate={onNavigate} />
+      
+      {/* 3. About */}
       <About />
-      <Contact onNavigate={onNavigate} />
+      
+      {/* 4. Pricing (Investir en soi) */}
+      <Pricing onNavigate={onNavigate} />
+      
+      {/* 5. Testimonials (Avis clients) */}
+      <Testimonials />
+      
+      {/* 6. Metamorphosis (Clés de la métamorphose) */}
+      <Metamorphosis onNavigate={onNavigate} />
+      
+      {/* 7. Contact (booking inside) - ID added for anchor scrolling */}
+      <div id="contact">
+          <Contact onNavigate={onNavigate} />
+      </div>
 
       {/* --- FOOTER --- */}
       <footer className="border-t border-white/5 bg-[#131f19] py-24 px-8">

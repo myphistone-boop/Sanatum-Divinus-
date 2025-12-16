@@ -15,9 +15,15 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
     setMounted(true);
   }, []);
 
+  const scrollToDiscover = () => {
+    const element = document.getElementById('discover');
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    // Reduced top padding: pt-20 instead of pt-28/32
-    <section className="min-h-screen w-full flex flex-col lg:flex-row items-center relative overflow-hidden pt-20 md:pt-24 lg:pt-20 xl:pt-24">
+    <section className="min-h-[auto] lg:min-h-screen w-full flex flex-col lg:flex-row items-center relative overflow-hidden pt-20 md:pt-24 lg:pt-20 xl:pt-24 pb-20 lg:pb-0">
         {/* Left Content */}
         <div className={`
             flex-1 h-full flex flex-col justify-center items-start px-6 md:px-12 lg:px-16 xl:px-24 z-20 
@@ -50,7 +56,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 relative z-10">
-              <Button onClick={() => onNavigate(View.DISCOVER)} className="animate-breathe shadow-[0_20px_60px_rgba(217,185,94,0.3)] hover:shadow-[0_30px_80px_rgba(217,185,94,0.5)] text-xs md:text-sm px-6 py-4 md:px-10">
+              <Button onClick={scrollToDiscover} className="animate-breathe shadow-[0_20px_60px_rgba(217,185,94,0.3)] hover:shadow-[0_30px_80px_rgba(217,185,94,0.5)] text-xs md:text-sm px-6 py-4 md:px-10">
                 Commencer le Voyage
               </Button>
               <Button variant="ghost" onClick={() => onNavigate(View.MEN)} className="opacity-90 hover:opacity-100 bg-white/5 backdrop-blur-md border border-white/10 hover:border-sacred-gold/50 rounded-full text-xs md:text-sm px-6 py-4">
@@ -60,9 +66,10 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           </div>
         </div>
 
-        {/* Right Content */}
+        {/* Right Content - Hidden on mobile */}
         <div className={`
-            flex-1 h-full flex items-center justify-center relative z-10 mt-0 lg:mt-0
+            hidden lg:flex
+            flex-1 h-full items-center justify-center relative z-10 mt-0 lg:mt-0
             transition-all duration-1000 delay-300 ease-out transform
             ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}
           `}>

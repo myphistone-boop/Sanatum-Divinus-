@@ -20,8 +20,28 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (view: View) => {
-    onNavigate(view);
+  const handleNavClick = (item: NavItem) => {
+    // Si on change de vue principale (ex: Home vers Men ou Men vers Home)
+    if (item.view !== currentView) {
+        onNavigate(item.view);
+        // Si il y a une ancre, on attend un peu que la vue se charge avant de scroller
+        if (item.sectionId) {
+            setTimeout(() => {
+                const element = document.getElementById(item.sectionId!);
+                if (element) element.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        } else {
+            window.scrollTo(0, 0);
+        }
+    } else {
+        // Si on est déjà sur la bonne vue, on scroll juste
+        if (item.sectionId) {
+            const element = document.getElementById(item.sectionId);
+            if (element) element.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }
     setMobileMenuOpen(false);
   };
 
@@ -41,14 +61,8 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
           {/* Logo Area */}
           <div 
             className="flex items-center gap-4 md:gap-6 cursor-pointer group"
-            onClick={() => handleNavClick(View.HOME)}
+            onClick={() => handleNavClick({ label: 'Home', view: View.HOME })}
           >
-            {/* 
-               Responsive Logo Size Optimized for Laptops: 
-               Mobile: w-16 h-16
-               Laptop (lg): w-20 h-20 (Reduced from 28/32)
-               Desktop (xl/2xl): w-28 h-28
-            */}
             <div className={`
                 relative z-50 flex items-center justify-center overflow-hidden bg-sacred-green-dark rounded-full 
                 border-2 border-sacred-gold/30 shadow-lg transition-all duration-500 group-hover:border-sacred-gold
@@ -77,17 +91,14 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
             {NAV_ITEMS.map((item) => (
               <button
                 key={item.label}
-                onClick={() => handleNavClick(item.view)}
+                onClick={() => handleNavClick(item)}
                 className={`
                   uppercase tracking-[0.2em] text-xs lg:text-xs xl:text-sm font-bold transition-all duration-500 relative py-4
                   hover:text-sacred-gold hover:scale-105
-                  ${currentView === item.view ? 'text-sacred-gold' : 'text-sacred-cream/90'}
+                  ${currentView === item.view && !item.sectionId ? 'text-sacred-gold' : 'text-sacred-cream/90'}
                 `}
               >
                 {item.label}
-                {currentView === item.view && (
-                  <span className="absolute -bottom-1 left-1/2 w-1.5 h-1.5 bg-sacred-gold rounded-full transform -translate-x-1/2 animate-pulse" />
-                )}
               </button>
             ))}
           </div>
@@ -108,10 +119,10 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
            {NAV_ITEMS.map((item) => (
               <button
                 key={item.label}
-                onClick={() => handleNavClick(item.view)}
+                onClick={() => handleNavClick(item)}
                 className={`
                   text-2xl font-serif font-bold text-sacred-cream hover:text-sacred-gold transition-colors duration-300
-                  ${currentView === item.view ? 'text-sacred-gold italic' : ''}
+                  ${currentView === item.view && !item.sectionId ? 'text-sacred-gold italic' : ''}
                 `}
               >
                 {item.label}
