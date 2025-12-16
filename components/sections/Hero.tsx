@@ -38,7 +38,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
 
             <div className="inline-flex items-center gap-3 md:gap-4 px-4 py-2 md:px-5 md:py-2 rounded-full border border-sacred-gold/30 bg-sacred-gold/10 mb-6 md:mb-8 lg:mb-10 shadow-lg">
               <Star size={12} className="text-sacred-gold fill-sacred-gold animate-pulse" />
-              <span className="text-[10px] md:text-[10px] lg:text-xs uppercase tracking-[0.25em] text-sacred-gold font-bold">Holistique Premium</span>
+              <span className="text-[10px] md:text-[10px] lg:text-xs uppercase tracking-[0.25em] text-sacred-gold font-bold">Canal d'Ange</span>
             </div>
 
             {/* Typography adjustments */}

@@ -18,22 +18,30 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
     <div className="w-full relative">
       <Hero onNavigate={onNavigate} />
       
-      {/* 2. Discover (2x3 grid) */}
+      {/* 2. Discover (ID 'discover' is inside the component) */}
       <DiscoverSection onNavigate={onNavigate} />
       
       {/* 3. About */}
-      <About />
+      <div id="about">
+        <About />
+      </div>
       
       {/* 4. Pricing (Investir en soi) */}
-      <Pricing onNavigate={onNavigate} />
+      <div id="pricing">
+        <Pricing onNavigate={onNavigate} />
+      </div>
       
       {/* 5. Testimonials (Avis clients) */}
-      <Testimonials />
+      <div id="testimonials">
+        <Testimonials />
+      </div>
       
       {/* 6. Metamorphosis (Clés de la métamorphose) */}
-      <Metamorphosis onNavigate={onNavigate} />
+      <div id="metamorphosis">
+        <Metamorphosis onNavigate={onNavigate} />
+      </div>
       
-      {/* 7. Contact (booking inside) - ID added for anchor scrolling */}
+      {/* 7. Contact (booking inside) */}
       <div id="contact">
           <Contact onNavigate={onNavigate} />
       </div>

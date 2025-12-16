@@ -39,7 +39,7 @@ const About: React.FC = () => {
                     </span>
                     
                     <h2 className="font-serif text-5xl lg:text-6xl xl:text-8xl text-sacred-cream mb-6 lg:mb-10 leading-[0.9]">
-                        Le Thérapeute <br/><span className="text-sacred-gold italic pl-10 lg:pl-20">Holistique</span>
+                        Le Thérapeute <br/><span className="text-sacred-gold italic pl-10 lg:pl-20">Canal d'Ange</span>
                     </h2>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 mb-8 lg:mb-10">
