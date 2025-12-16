@@ -59,21 +59,21 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           </div>
         </div>
 
-        {/* Right Content - Adjusted scales for laptop screens */}
+        {/* Right Content - SCALED UP SIGNIFICANTLY */}
         <div className={`
             flex-1 h-full flex items-center justify-center relative z-10 mt-0 lg:mt-0
             transition-all duration-1000 delay-300 ease-out transform
             ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}
           `}>
           {/* 
-             Significant scaling adjustment for laptops:
-             Mobile: 0.4
-             Tablet: 0.55
-             Laptop (lg): 0.50 (Reduced to fit 13" screens)
-             Desktop (xl): 0.65
-             Large Screen (2xl): 0.8
+             Grand Scale Orrery:
+             Mobile: 0.45 (Visible)
+             Tablet: 0.6
+             Laptop (lg): 0.75 (Much larger than before)
+             Desktop (xl): 0.85
+             Large Screen (2xl): 1.0
           */}
-          <div className="transform scale-[0.35] md:scale-[0.5] lg:scale-[0.5] xl:scale-[0.65] 2xl:scale-[0.8] origin-center lg:translate-x-0 hover:scale-[0.4] md:hover:scale-[0.55] lg:hover:scale-[0.55] xl:hover:scale-[0.7] transition-transform duration-[2s]">
+          <div className="transform scale-[0.45] md:scale-[0.6] lg:scale-[0.75] xl:scale-[0.85] 2xl:scale-[1.0] origin-center lg:translate-x-10 hover:scale-[0.5] md:hover:scale-[0.65] lg:hover:scale-[0.8] xl:hover:scale-[0.9] transition-transform duration-[2s]">
              <Orrery />
           </div>
         </div>
