@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button } from '../ui/Button';
-import { Phone, Mail, MapPin, Calendar, Clock, ArrowRight } from 'lucide-react';
+import { Phone, Mail, MapPin } from 'lucide-react';
 import { View } from '../../types';
+import BookingView from '../views/BookingView';
 
 interface ContactProps {
   onNavigate?: (view: View) => void;
@@ -26,7 +26,7 @@ const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
                 </h2>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-stretch">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-stretch h-auto lg:h-[600px]">
                 
                 {/* COLONNE GAUCHE : CARTE DE CONTACT */}
                 <div className="flex flex-col h-full">
@@ -84,53 +84,19 @@ const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
                     </div>
                 </div>
 
-                {/* COLONNE DROITE : AGENDA / RÉSERVATION */}
+                {/* COLONNE DROITE : WIDGET DE RÉSERVATION */}
                 <div className="flex flex-col h-full">
-                    <div className="bg-gradient-to-br from-[#D9B95E]/10 to-[#1A2B22]/80 backdrop-blur-md border border-sacred-gold/30 p-10 lg:p-14 rounded-[2rem] h-full relative overflow-hidden flex flex-col justify-center items-center text-center shadow-[0_0_50px_rgba(217,185,94,0.05)] group hover:shadow-[0_0_80px_rgba(217,185,94,0.1)] transition-shadow duration-500">
+                    <div className="bg-gradient-to-br from-[#D9B95E]/10 to-[#1A2B22]/80 backdrop-blur-md border border-sacred-gold/30 p-8 lg:p-10 rounded-[2rem] h-full relative overflow-hidden shadow-[0_0_50px_rgba(217,185,94,0.05)] group hover:shadow-[0_0_80px_rgba(217,185,94,0.1)] transition-shadow duration-500 flex flex-col">
                         
                         {/* Background Effect */}
-                        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+                        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
                         
-                        <div className="relative z-10 w-full max-w-md">
-                            <div className="w-20 h-20 bg-sacred-gold rounded-full flex items-center justify-center text-sacred-green-dark mx-auto mb-8 shadow-[0_10px_30px_rgba(217,185,94,0.3)] animate-pulse-glow">
-                                <Calendar size={32} />
-                            </div>
-
-                            <h3 className="font-serif text-3xl lg:text-4xl text-sacred-cream mb-4">
-                                Prochaines Disponibilités
+                        <div className="relative z-10 w-full h-full flex flex-col">
+                            <h3 className="font-serif text-2xl lg:text-3xl text-sacred-cream mb-4 text-center">
+                                Réserver une Séance
                             </h3>
-                            
-                            <p className="text-sacred-cream/70 mb-8 font-light leading-relaxed">
-                                L'agenda se remplit rapidement. Réservez votre séance découverte ou votre place pour la prochaine immersion.
-                            </p>
-
-                            {/* Mockup de créneaux */}
-                            <div className="grid grid-cols-2 gap-4 mb-10 w-full">
-                                <div className="bg-sacred-green-dark/60 border border-sacred-gold/20 p-4 rounded-xl flex flex-col items-center">
-                                    <span className="text-sacred-gold font-bold text-sm uppercase">Octobre</span>
-                                    <span className="text-2xl text-white font-serif my-1">14</span>
-                                    <span className="text-xs text-white/50">Lundi</span>
-                                </div>
-                                <div className="bg-sacred-green-dark/60 border border-sacred-gold/20 p-4 rounded-xl flex flex-col items-center">
-                                    <span className="text-sacred-gold font-bold text-sm uppercase">Octobre</span>
-                                    <span className="text-2xl text-white font-serif my-1">16</span>
-                                    <span className="text-xs text-white/50">Mercredi</span>
-                                </div>
-                            </div>
-
-                            {onNavigate && (
-                                <Button 
-                                    onClick={() => onNavigate(View.BOOKING)}
-                                    className="w-full flex items-center justify-center gap-3 py-5 text-sm uppercase tracking-widest"
-                                >
-                                    <span>Accéder à l'Agenda</span>
-                                    <ArrowRight size={16} />
-                                </Button>
-                            )}
-
-                            <div className="mt-6 flex items-center justify-center gap-2 text-sacred-gold/60 text-xs">
-                                <Clock size={12} />
-                                <span>Créneaux mis à jour en temps réel</span>
+                            <div className="flex-grow">
+                                <BookingView mode="widget" theme="dark" onNavigate={onNavigate} />
                             </div>
                         </div>
                     </div>
