@@ -62,11 +62,11 @@ const Pricing: React.FC<PricingProps> = ({ onNavigate }) => {
   ];
 
   return (
-      <section className="py-32 px-6 relative">
+      <section className="py-20 lg:py-32 px-6 relative">
         <div className="max-w-[100rem] mx-auto">
-            <div className="text-center mb-20">
-                <h2 className="font-serif text-6xl md:text-8xl text-sacred-cream mb-6">Investir en <span className="text-sacred-gold italic">Soi</span></h2>
-                <div className="w-32 h-1 bg-sacred-gold/30 mx-auto rounded-full" />
+            <div className="text-center mb-16 lg:mb-20">
+                <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl text-sacred-cream mb-6">Investir en <span className="text-sacred-gold italic">Soi</span></h2>
+                <div className="w-24 lg:w-32 h-1 bg-sacred-gold/30 mx-auto rounded-full" />
             </div>
 
             {/* Main Grid: Detail Card (Wide Landscape) on Left, Selector on Right */}
@@ -74,57 +74,57 @@ const Pricing: React.FC<PricingProps> = ({ onNavigate }) => {
                 
                 {/* LEFT: Dynamic Detailed Card - Explicit Landscape Rectangle (col-span-8) */}
                 <div className="lg:col-span-8 order-2 lg:order-1">
-                     <div key={activePrice} className="animate-fade-in-up w-full min-h-[600px] bg-[#1A231E] border border-sacred-gold/20 rounded-[3rem] p-12 lg:p-14 relative overflow-hidden shadow-2xl flex flex-col justify-between">
+                     <div key={activePrice} className="animate-fade-in-up w-full min-h-[500px] lg:min-h-[600px] bg-[#1A231E] border border-sacred-gold/20 rounded-[2.5rem] lg:rounded-[3rem] p-8 lg:p-12 xl:p-14 relative overflow-hidden shadow-2xl flex flex-col justify-between">
                         
                         {/* Background Flair */}
-                        <div className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-sacred-gold/5 rounded-full blur-[100px] pointer-events-none"></div>
-                        <div className="absolute bottom-0 right-0 w-80 h-80 bg-sacred-green/20 rounded-full blur-[80px] pointer-events-none"></div>
+                        <div className="absolute -top-20 -left-20 w-[400px] lg:w-[500px] h-[400px] lg:h-[500px] bg-sacred-gold/5 rounded-full blur-[100px] pointer-events-none"></div>
+                        <div className="absolute bottom-0 right-0 w-60 lg:w-80 h-60 lg:h-80 bg-sacred-green/20 rounded-full blur-[80px] pointer-events-none"></div>
 
                         <div className="relative z-10 flex flex-col h-full justify-between">
                             {/* Header Section of Card */}
                             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 border-b border-white/5 pb-8">
                                 <div>
                                     <div className="flex items-center gap-4 mb-3">
-                                         <h3 className="font-serif text-5xl md:text-6xl text-sacred-cream">{pricingOptions[activePrice].title}</h3>
+                                         <h3 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-sacred-cream">{pricingOptions[activePrice].title}</h3>
                                          {pricingOptions[activePrice].tag && (
-                                            <span className="bg-sacred-gold text-sacred-green-dark px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest animate-pulse shadow-[0_0_20px_rgba(217,185,94,0.4)]">
+                                            <span className="bg-sacred-gold text-sacred-green-dark px-3 py-1 lg:px-4 rounded-full text-[10px] lg:text-xs font-bold uppercase tracking-widest animate-pulse shadow-[0_0_20px_rgba(217,185,94,0.4)]">
                                                 {pricingOptions[activePrice].tag}
                                             </span>
                                         )}
                                     </div>
-                                    <p className="text-sacred-cream/60 text-lg italic font-serif">"{pricingOptions[activePrice].desc}"</p>
+                                    <p className="text-sacred-cream/60 text-base lg:text-lg italic font-serif">"{pricingOptions[activePrice].desc}"</p>
                                 </div>
-                                <div className="mt-6 md:mt-0 text-right bg-white/5 p-6 rounded-3xl border border-white/5 backdrop-blur-sm min-w-[200px]">
-                                    <div className="text-4xl md:text-5xl font-bold text-sacred-gold tracking-tight">{pricingOptions[activePrice].price}</div>
-                                    <div className="text-sacred-cream/40 uppercase tracking-widest text-xs font-bold text-right mt-1">{pricingOptions[activePrice].period}</div>
+                                <div className="mt-6 md:mt-0 text-right bg-white/5 p-4 lg:p-6 rounded-3xl border border-white/5 backdrop-blur-sm min-w-[180px] lg:min-w-[200px]">
+                                    <div className="text-3xl lg:text-4xl xl:text-5xl font-bold text-sacred-gold tracking-tight">{pricingOptions[activePrice].price}</div>
+                                    <div className="text-sacred-cream/40 uppercase tracking-widest text-[10px] lg:text-xs font-bold text-right mt-1">{pricingOptions[activePrice].period}</div>
                                 </div>
                             </div>
 
                             {/* Middle Content Section */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 mb-8">
                                 <div className="flex flex-col justify-between">
                                     <div>
-                                        <span className="uppercase text-xs tracking-[0.2em] text-sacred-gold font-bold mb-6 block">L'expérience</span>
-                                        <p className="text-xl text-sacred-cream/90 font-light leading-relaxed mb-8 text-justify">
+                                        <span className="uppercase text-xs tracking-[0.2em] text-sacred-gold font-bold mb-4 lg:mb-6 block">L'expérience</span>
+                                        <p className="text-lg lg:text-xl text-sacred-cream/90 font-light leading-relaxed mb-8 text-justify">
                                             {pricingOptions[activePrice].longDesc}
                                         </p>
                                     </div>
                                     
-                                    <div className="p-6 bg-sacred-gold/5 rounded-3xl border border-sacred-gold/10 relative mt-auto">
-                                        <Sparkles className="text-sacred-gold w-8 h-8 absolute -top-4 -left-4 bg-[#1A231E] rounded-full p-1 border border-sacred-gold/20" />
+                                    <div className="p-4 lg:p-6 bg-sacred-gold/5 rounded-3xl border border-sacred-gold/10 relative mt-auto">
+                                        <Sparkles className="text-sacred-gold w-6 h-6 lg:w-8 lg:h-8 absolute -top-3 -left-3 lg:-top-4 lg:-left-4 bg-[#1A231E] rounded-full p-1 border border-sacred-gold/20" />
                                         <p className="text-sm text-sacred-cream/80 italic font-serif">"La valeur ne réside pas dans ce que vous payez, mais dans ce que vous devenez."</p>
                                     </div>
                                 </div>
 
-                                <div className="bg-white/[0.02] rounded-[2rem] p-8 border border-white/5 h-full">
-                                    <span className="uppercase text-xs tracking-[0.2em] text-sacred-gold font-bold mb-8 block border-b border-white/5 pb-4">Inclusions Exclusives</span>
-                                    <ul className="space-y-4">
+                                <div className="bg-white/[0.02] rounded-[2rem] p-6 lg:p-8 border border-white/5 h-full">
+                                    <span className="uppercase text-xs tracking-[0.2em] text-sacred-gold font-bold mb-6 lg:mb-8 block border-b border-white/5 pb-4">Inclusions Exclusives</span>
+                                    <ul className="space-y-3 lg:space-y-4">
                                         {pricingOptions[activePrice].includes.map((inc, i) => (
                                             <li key={i} className="flex items-center gap-4 group">
-                                                <div className="w-6 h-6 rounded-full bg-sacred-green-dark border border-sacred-gold/30 flex items-center justify-center flex-shrink-0 group-hover:bg-sacred-gold group-hover:border-sacred-gold transition-all duration-300">
-                                                    <CheckCircle size={12} className="text-sacred-gold group-hover:text-sacred-green-dark" />
+                                                <div className="w-5 h-5 lg:w-6 lg:h-6 rounded-full bg-sacred-green-dark border border-sacred-gold/30 flex items-center justify-center flex-shrink-0 group-hover:bg-sacred-gold group-hover:border-sacred-gold transition-all duration-300">
+                                                    <CheckCircle size={10} className="text-sacred-gold group-hover:text-sacred-green-dark lg:w-3 lg:h-3" />
                                                 </div>
-                                                <span className="text-sacred-cream/80 text-lg group-hover:text-white transition-colors">{inc}</span>
+                                                <span className="text-sacred-cream/80 text-base lg:text-lg group-hover:text-white transition-colors">{inc}</span>
                                             </li>
                                         ))}
                                     </ul>
@@ -133,8 +133,8 @@ const Pricing: React.FC<PricingProps> = ({ onNavigate }) => {
 
                             {/* Footer Action Section */}
                             <div className="pt-4 flex items-center justify-between">
-                                <span className="text-sacred-cream/30 text-xs uppercase tracking-widest hidden md:inline-block">Places limitées par mois</span>
-                                <Button className="w-full md:w-auto px-12 shadow-[0_10px_30px_rgba(217,185,94,0.15)] hover:shadow-[0_20px_50px_rgba(217,185,94,0.3)]" onClick={() => onNavigate(View.BOOKING)}>
+                                <span className="text-sacred-cream/30 text-[10px] lg:text-xs uppercase tracking-widest hidden md:inline-block">Places limitées par mois</span>
+                                <Button className="w-full md:w-auto px-10 lg:px-12 shadow-[0_10px_30px_rgba(217,185,94,0.15)] hover:shadow-[0_20px_50px_rgba(217,185,94,0.3)] text-sm lg:text-base" onClick={() => onNavigate(View.BOOKING)}>
                                     Choisir {pricingOptions[activePrice].title}
                                 </Button>
                             </div>
@@ -149,21 +149,21 @@ const Pricing: React.FC<PricingProps> = ({ onNavigate }) => {
                             key={opt.id}
                             onClick={() => setActivePrice(opt.id)}
                             className={`
-                                cursor-pointer rounded-[2rem] p-6 border-2 transition-all duration-500 flex items-center justify-between group relative overflow-hidden
+                                cursor-pointer rounded-[2rem] p-5 lg:p-6 border-2 transition-all duration-500 flex items-center justify-between group relative overflow-hidden
                                 ${activePrice === opt.id 
                                     ? 'bg-sacred-gold text-sacred-green-dark border-sacred-gold shadow-[0_10px_40px_rgba(217,185,94,0.3)] -translate-x-2 z-20 scale-105' 
                                     : 'bg-white/5 border-white/5 hover:bg-white/10 hover:border-sacred-gold/30 opacity-70 hover:opacity-100'}
                             `}
                         >
                             <div className="relative z-10 flex items-center gap-6 w-full">
-                                <div className={`p-4 rounded-2xl flex-shrink-0 ${activePrice === opt.id ? 'bg-sacred-green-dark text-sacred-gold' : 'bg-white/10 text-sacred-gold'} transition-colors`}>
+                                <div className={`p-3 lg:p-4 rounded-2xl flex-shrink-0 ${activePrice === opt.id ? 'bg-sacred-green-dark text-sacred-gold' : 'bg-white/10 text-sacred-gold'} transition-colors`}>
                                     {opt.icon}
                                 </div>
                                 <div className="flex-grow">
-                                    <h4 className={`font-serif text-2xl font-bold mb-0 ${activePrice === opt.id ? 'text-sacred-green-dark' : 'text-sacred-cream'}`}>
+                                    <h4 className={`font-serif text-xl lg:text-2xl font-bold mb-0 ${activePrice === opt.id ? 'text-sacred-green-dark' : 'text-sacred-cream'}`}>
                                         {opt.title}
                                     </h4>
-                                    <p className={`text-xs uppercase tracking-widest font-bold mt-1 ${activePrice === opt.id ? 'text-sacred-green-dark/60' : 'text-sacred-cream/40'}`}>{opt.period}</p>
+                                    <p className={`text-[10px] lg:text-xs uppercase tracking-widest font-bold mt-1 ${activePrice === opt.id ? 'text-sacred-green-dark/60' : 'text-sacred-cream/40'}`}>{opt.period}</p>
                                 </div>
                                 <ArrowLeft className={`w-5 h-5 flex-shrink-0 transition-transform duration-500 ${activePrice === opt.id ? 'text-sacred-green-dark translate-x-0' : 'text-transparent translate-x-4'}`} />
                             </div>
