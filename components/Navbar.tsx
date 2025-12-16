@@ -28,43 +28,43 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
   return (
     <>
       <nav 
-        className={`fixed top-8 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-700 ease-in-out
-          ${scrolled ? 'w-[98%] md:w-[1400px] py-6' : 'w-[98%] md:w-[1800px] py-10'}
+        className={`fixed top-4 md:top-8 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-700 ease-in-out
+          ${scrolled ? 'w-[95%] max-w-[1400px] py-4 md:py-6' : 'w-[95%] max-w-[1800px] py-6 md:py-10'}
         `}
       >
         <div className={`
-          relative w-full h-full rounded-full flex items-center justify-between px-12 md:px-16 transition-all duration-700
+          relative w-full h-full rounded-full flex items-center justify-between px-6 md:px-16 transition-all duration-700
           backdrop-blur-xl border-2 border-white/10 shadow-2xl
           ${scrolled ? 'bg-sacred-green-dark/95' : 'bg-sacred-green/60'}
         `}>
           
-          {/* Logo Area - MASSIVE ZOOM X4 (relative to original) */}
+          {/* Logo Area */}
           <div 
-            className="flex items-center gap-8 cursor-pointer group"
+            className="flex items-center gap-4 md:gap-8 cursor-pointer group"
             onClick={() => handleNavClick(View.HOME)}
           >
             {/* 
-               Increased dimensions to w-48/h-48 (approx 192px). 
-               Added -my-12 to prevent the navbar height from expanding. 
-               The logo will float/overflow nicely.
+               Responsive Logo Size: 
+               Mobile: w-24 h-24 
+               Desktop: w-48 h-48 (approx 192px)
             */}
-            <div className="w-48 h-48 -my-12 rounded-full border-2 border-sacred-gold/30 flex items-center justify-center overflow-hidden bg-sacred-green-dark group-hover:border-sacred-gold transition-colors duration-500 shadow-lg -ml-8 relative z-50">
-              <img src={LOGO_URL} alt="SD" className="w-40 h-40 object-contain opacity-100 group-hover:scale-110 transition-transform duration-700" />
+            <div className="w-24 h-24 md:w-48 md:h-48 -my-8 md:-my-12 rounded-full border-2 border-sacred-gold/30 flex items-center justify-center overflow-hidden bg-sacred-green-dark group-hover:border-sacred-gold transition-colors duration-500 shadow-lg -ml-2 md:-ml-8 relative z-50">
+              <img src={LOGO_URL} alt="SD" className="w-20 h-20 md:w-40 md:h-40 object-contain opacity-100 group-hover:scale-110 transition-transform duration-700" />
             </div>
             
-            <span className={`font-serif tracking-widest text-sacred-gold text-2xl font-bold hidden md:block opacity-0 ${scrolled ? 'opacity-0 w-0' : 'opacity-100 w-auto'} transition-all duration-500 overflow-hidden whitespace-nowrap pl-4`}>
+            <span className={`font-serif tracking-widest text-sacred-gold text-lg md:text-2xl font-bold hidden md:block opacity-0 ${scrolled ? 'opacity-0 w-0' : 'opacity-100 w-auto'} transition-all duration-500 overflow-hidden whitespace-nowrap pl-2 md:pl-4`}>
               SANATUM DIVINUS
             </span>
           </div>
 
-          {/* Desktop Nav - text-lg and heavy bold */}
-          <div className="hidden md:flex items-center gap-20">
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-10 lg:gap-20">
             {NAV_ITEMS.map((item) => (
               <button
                 key={item.label}
                 onClick={() => handleNavClick(item.view)}
                 className={`
-                  uppercase tracking-[0.3em] text-lg font-bold transition-all duration-500 relative py-4
+                  uppercase tracking-[0.3em] text-sm lg:text-lg font-bold transition-all duration-500 relative py-4
                   hover:text-sacred-gold hover:scale-110
                   ${currentView === item.view ? 'text-sacred-gold' : 'text-sacred-cream/90'}
                 `}
@@ -79,10 +79,10 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
 
           {/* Mobile Toggle */}
           <button 
-            className="md:hidden text-sacred-gold"
+            className="md:hidden text-sacred-gold p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? <X size={40} /> : <Menu size={40} />}
+            {mobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
           </button>
         </div>
       </nav>
@@ -95,7 +95,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
                 key={item.label}
                 onClick={() => handleNavClick(item.view)}
                 className={`
-                  text-5xl font-serif font-bold text-sacred-cream hover:text-sacred-gold transition-colors duration-300
+                  text-4xl font-serif font-bold text-sacred-cream hover:text-sacred-gold transition-colors duration-300
                   ${currentView === item.view ? 'text-sacred-gold italic' : ''}
                 `}
               >
