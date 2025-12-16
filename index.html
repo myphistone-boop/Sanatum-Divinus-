@@ -89,6 +89,14 @@
         color: #FFF9EC;
         overflow-x: hidden;
       }
+      
+      /* Apply 75% zoom for desktop screens to create a premium, spacious feel */
+      @media (min-width: 1024px) {
+        body {
+          zoom: 0.75;
+        }
+      }
+
       ::-webkit-scrollbar {
         width: 8px;
       }
