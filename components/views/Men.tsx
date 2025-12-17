@@ -57,7 +57,7 @@ const Men: React.FC<MenProps> = ({ onNavigate }) => {
                                 { icon: <Heart size={32} />, title: "Bienveillance", text: "Un espace sûr pour déposer ce qui nous pèse et célébrer ce qui nous porte." },
                                 { icon: <Sun size={32} />, title: "Évolution", text: "Grandir spirituellement en s'inspirant du chemin de chacun." },
                             ].map((val, i) => (
-                                <div key={i} className="bg-white/5 p-6 lg:p-10 rounded-[2rem] border-2 border-white/5 hover:border-sacred-gold/30 transition-colors h-full flex flex-col">
+                                <div key={i} className="bg-sacred-green-dark/90 backdrop-blur-md p-6 lg:p-10 rounded-[2rem] border-2 border-white/10 hover:border-sacred-gold/30 transition-colors h-full flex flex-col shadow-xl">
                                     <div className="text-sacred-gold mb-4 lg:mb-6">{val.icon}</div>
                                     <h4 className="font-serif text-2xl lg:text-3xl text-sacred-cream mb-2 lg:mb-4">{val.title}</h4>
                                     <p className="text-base lg:text-lg text-sacred-cream/70 leading-relaxed">{val.text}</p>
