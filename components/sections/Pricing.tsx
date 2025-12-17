@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '../ui/Button';
-import { ArrowLeft, Sparkles, CheckCircle, Clock, Gem, Infinity } from 'lucide-react';
+import { ArrowLeft, Sparkles, CheckCircle, Clock, Gem, Infinity, ChevronDown, ChevronUp } from 'lucide-react';
 import { View } from '../../types';
 
 interface PricingProps {
@@ -9,6 +9,8 @@ interface PricingProps {
 
 const Pricing: React.FC<PricingProps> = ({ onNavigate }) => {
   const [activePrice, setActivePrice] = useState(1);
+  // Separate state for mobile expansion to allow toggling
+  const [mobileExpandedId, setMobileExpandedId] = useState<number | null>(null);
 
   const pricingOptions = [
     {
@@ -61,6 +63,10 @@ const Pricing: React.FC<PricingProps> = ({ onNavigate }) => {
     }
   ];
 
+  const toggleMobile = (id: number) => {
+      setMobileExpandedId(mobileExpandedId === id ? null : id);
+  };
+
   return (
       <section className="py-16 lg:py-24 px-6 relative">
         <div className="max-w-[100rem] mx-auto">
@@ -69,10 +75,85 @@ const Pricing: React.FC<PricingProps> = ({ onNavigate }) => {
                 <div className="w-16 lg:w-24 h-0.5 lg:h-1 bg-sacred-gold/30 mx-auto rounded-full" />
             </div>
 
-            {/* Main Grid: Detail Card (Wide Landscape) on Left, Selector on Right */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+            {/* --- MOBILE VIEW: ACCORDION LIST --- */}
+            <div className="lg:hidden flex flex-col gap-4">
+                {pricingOptions.map((opt) => {
+                    const isExpanded = mobileExpandedId === opt.id;
+                    return (
+                        <div 
+                            key={opt.id}
+                            className={`
+                                rounded-[2rem] border-2 overflow-hidden transition-all duration-500
+                                ${isExpanded 
+                                    ? 'bg-sacred-green-dark border-sacred-gold shadow-[0_10px_30px_rgba(217,185,94,0.2)]' 
+                                    : 'bg-white/5 border-white/5'}
+                            `}
+                        >
+                            {/* Card Header (Always Visible) */}
+                            <div 
+                                onClick={() => toggleMobile(opt.id)}
+                                className="p-6 flex items-center justify-between cursor-pointer"
+                            >
+                                <div className="flex items-center gap-4">
+                                    <div className={`p-3 rounded-xl ${isExpanded ? 'bg-sacred-gold text-sacred-green-dark' : 'bg-white/10 text-sacred-gold'}`}>
+                                        {opt.icon}
+                                    </div>
+                                    <div>
+                                        <div className="flex items-center gap-2">
+                                            <h4 className={`font-serif text-xl font-bold ${isExpanded ? 'text-sacred-gold' : 'text-sacred-cream'}`}>{opt.title}</h4>
+                                            {opt.tag && !isExpanded && (
+                                                <span className="bg-sacred-gold text-sacred-green-dark px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-widest">
+                                                    {opt.tag}
+                                                </span>
+                                            )}
+                                        </div>
+                                        <p className="text-[10px] uppercase tracking-widest font-bold mt-1 text-sacred-cream/40">{opt.period}</p>
+                                    </div>
+                                </div>
+                                <div className={`transition-transform duration-300 ${isExpanded ? 'rotate-180 text-sacred-gold' : 'text-sacred-cream/50'}`}>
+                                    <ChevronDown />
+                                </div>
+                            </div>
+
+                            {/* Expanded Content */}
+                            {isExpanded && (
+                                <div className="px-6 pb-6 animate-fade-in-up">
+                                    <div className="border-t border-white/10 my-4 pt-4 flex justify-between items-center">
+                                        <div className="text-3xl font-bold text-sacred-cream">{opt.price}</div>
+                                        {opt.tag && <span className="text-sacred-gold text-xs font-bold uppercase tracking-widest">{opt.tag}</span>}
+                                    </div>
+
+                                    <p className="text-sm text-sacred-cream/80 font-light leading-relaxed mb-6">
+                                        {opt.longDesc}
+                                    </p>
+
+                                    <div className="bg-white/5 rounded-xl p-4 mb-6">
+                                        <span className="uppercase text-[10px] tracking-[0.2em] text-sacred-gold font-bold mb-3 block border-b border-white/5 pb-2">Inclus</span>
+                                        <ul className="space-y-2">
+                                            {opt.includes.map((inc, i) => (
+                                                <li key={i} className="flex items-center gap-3">
+                                                    <CheckCircle size={14} className="text-sacred-gold flex-shrink-0" />
+                                                    <span className="text-sacred-cream/80 text-sm">{inc}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+
+                                    <Button className="w-full text-sm py-4" onClick={() => onNavigate(View.BOOKING)}>
+                                        Sélectionner
+                                    </Button>
+                                </div>
+                            )}
+                        </div>
+                    );
+                })}
+            </div>
+
+
+            {/* --- DESKTOP VIEW: SPLIT GRID --- */}
+            <div className="hidden lg:grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
                 
-                {/* LEFT: Dynamic Detailed Card - Explicit Landscape Rectangle (col-span-8) */}
+                {/* LEFT: Dynamic Detailed Card */}
                 <div className="lg:col-span-8 order-2 lg:order-1">
                      <div key={activePrice} className="animate-fade-in-up w-full min-h-[420px] lg:min-h-[480px] xl:min-h-[550px] bg-[#1A231E] border border-sacred-gold/20 rounded-[2rem] lg:rounded-[2.5rem] xl:rounded-[3rem] p-6 lg:p-8 xl:p-12 relative overflow-hidden shadow-2xl flex flex-col justify-between">
                         
@@ -142,7 +223,7 @@ const Pricing: React.FC<PricingProps> = ({ onNavigate }) => {
                      </div>
                 </div>
 
-                {/* RIGHT: Selection List (Vertical Stack) */}
+                {/* RIGHT: Selection List */}
                 <div className="lg:col-span-4 flex flex-col gap-3 lg:gap-3 order-1 lg:order-2 h-full">
                     {pricingOptions.map((opt) => (
                         <div 

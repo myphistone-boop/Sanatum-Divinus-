@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '../ui/Button';
-import { Activity, Moon, Shield, Clock, Brain, Check } from 'lucide-react';
+import { Activity, Moon, Shield, Clock, Brain, Check, ChevronDown } from 'lucide-react';
 import { View } from '../../types';
 
 interface MetamorphosisProps {
@@ -9,9 +9,11 @@ interface MetamorphosisProps {
 
 const Metamorphosis: React.FC<MetamorphosisProps> = ({ onNavigate }) => {
   const [activeFeature, setActiveFeature] = useState(0);
+  const [mobileExpandedId, setMobileExpandedId] = useState<number | null>(null);
 
   const features = [
     {
+        id: 0,
         title: "Hypnose Régressive",
         subtitle: "Voyage Quantique",
         description: "Un voyage guidé dans les profondeurs de l'inconscient pour dénouer les blocages émotionnels et les traumatismes enfouis. Nous accédons aux ondes Thêta pour reprogrammer les croyances limitantes à la racine.",
@@ -23,6 +25,7 @@ const Metamorphosis: React.FC<MetamorphosisProps> = ({ onNavigate }) => {
         target: "Traumatismes, Phobies"
     },
     {
+        id: 1,
         title: "Bio-Résonance",
         subtitle: "Harmonie Vibratoire",
         description: "Analyse et rééquilibrage des fréquences énergétiques de vos organes. Le corps est un orchestre ; quand un organe joue faux, la symphonie s'effondre. Nous utilisons la technologie quantique pour réaccorder votre instrument.",
@@ -34,6 +37,7 @@ const Metamorphosis: React.FC<MetamorphosisProps> = ({ onNavigate }) => {
         target: "Fatigue, Douleurs"
     },
     {
+        id: 2,
         title: "Ancrage Somatique",
         subtitle: "Retour au Corps",
         description: "Reconnecter le corps et l'esprit par le mouvement et la respiration consciente. Le traumatisme n'est pas dans l'événement, mais dans le système nerveux. Nous déchargeons l'énergie figée pour retrouver la fluidité.",
@@ -46,8 +50,11 @@ const Metamorphosis: React.FC<MetamorphosisProps> = ({ onNavigate }) => {
     }
   ];
 
+  const toggleMobile = (id: number) => {
+    setMobileExpandedId(mobileExpandedId === id ? null : id);
+  };
+
   return (
-      // Reduced top padding: pt-10 instead of py-16
       <section className="pt-10 pb-20 px-6 relative z-10 overflow-hidden">
         <div className="max-w-[100rem] mx-auto">
             <div className="text-center mb-10 lg:mb-12">
@@ -55,7 +62,83 @@ const Metamorphosis: React.FC<MetamorphosisProps> = ({ onNavigate }) => {
                 <div className="w-16 lg:w-24 h-0.5 lg:h-1 bg-sacred-gold/30 mx-auto rounded-full"></div>
             </div>
             
-            <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-stretch h-auto lg:h-[500px] xl:h-[650px]">
+            {/* --- MOBILE VIEW: ACCORDION --- */}
+            <div className="lg:hidden flex flex-col gap-4">
+                {features.map((feature, idx) => {
+                    const isExpanded = mobileExpandedId === idx;
+                    return (
+                         <div 
+                            key={idx}
+                            className={`
+                                rounded-[2rem] border overflow-hidden transition-all duration-500
+                                ${isExpanded 
+                                    ? 'bg-[#1A2B22]/90 border-sacred-gold shadow-lg' 
+                                    : 'bg-white/5 border-white/5'}
+                            `}
+                         >
+                            <div 
+                                onClick={() => toggleMobile(idx)}
+                                className="p-6 cursor-pointer flex items-center justify-between"
+                            >
+                                <div className="flex items-center gap-4">
+                                    <div className={`scale-75 ${isExpanded ? 'text-sacred-gold' : 'text-sacred-cream/60'}`}>
+                                        {feature.icon}
+                                    </div>
+                                    <div>
+                                        <h3 className={`font-serif text-lg font-bold leading-none ${isExpanded ? 'text-sacred-gold' : 'text-sacred-cream'}`}>{feature.title}</h3>
+                                        <span className="text-[10px] uppercase tracking-widest opacity-60 mt-1 block font-sans font-semibold">{feature.subtitle}</span>
+                                    </div>
+                                </div>
+                                <div className={`transition-transform duration-300 ${isExpanded ? 'rotate-180 text-sacred-gold' : 'text-sacred-cream/50'}`}>
+                                    <ChevronDown size={20} />
+                                </div>
+                            </div>
+
+                            {isExpanded && (
+                                <div className="px-6 pb-8 pt-0 animate-fade-in-up">
+                                    <p className="font-sans text-sm text-sacred-cream/80 leading-relaxed mb-6 font-light border-l-2 border-sacred-gold/30 pl-4">
+                                        {feature.description}
+                                    </p>
+
+                                    <div className="flex gap-4 mb-6">
+                                        <div className="bg-white/5 rounded-xl p-3 border border-white/5 flex-1 text-center">
+                                            <div className="text-[10px] text-sacred-gold uppercase font-bold mb-1">Science</div>
+                                            <span className="text-xs text-sacred-cream">{feature.science}</span>
+                                        </div>
+                                        <div className="bg-white/5 rounded-xl p-3 border border-white/5 flex-1 text-center">
+                                            <div className="text-[10px] text-sacred-gold uppercase font-bold mb-1">Durée</div>
+                                            <span className="text-xs text-sacred-cream">{feature.duration}</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-sacred-green-dark rounded-2xl p-4 border border-white/5">
+                                        <h4 className="font-serif text-lg text-sacred-cream mb-4">Le Protocole</h4>
+                                        <div className="space-y-4">
+                                            {feature.steps.map((step, i) => (
+                                                <div key={i} className="flex items-center gap-3">
+                                                    <div className="w-6 h-6 rounded-full border border-sacred-gold/40 bg-sacred-green-dark flex items-center justify-center text-sacred-gold text-xs font-bold flex-shrink-0">
+                                                        {i + 1}
+                                                    </div>
+                                                    <span className="text-sm text-sacred-cream/90 font-light">{step}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="mt-6 flex justify-center">
+                                        <Button variant="outline" onClick={() => onNavigate(View.DISCOVER)} className="w-full text-xs py-3">
+                                            Explorer
+                                        </Button>
+                                    </div>
+                                </div>
+                            )}
+                         </div>
+                    );
+                })}
+            </div>
+
+            {/* --- DESKTOP VIEW: SPLIT CARD --- */}
+            <div className="hidden lg:flex flex-col lg:flex-row gap-6 lg:gap-8 items-stretch h-auto lg:h-[500px] xl:h-[650px]">
                 
                 {/* Left: Navigation Menu (Compact) */}
                 <div className="lg:w-1/4 flex flex-col gap-2 lg:gap-3 justify-center">
