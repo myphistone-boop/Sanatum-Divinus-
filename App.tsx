@@ -5,6 +5,7 @@ import Home from './components/views/Home';
 import Men from './components/views/Men';
 import Discover from './components/views/Discover';
 import BookingView from './components/views/BookingView';
+import WhatsAppButton from './components/ui/WhatsAppButton';
 import { View } from './types';
 
 const App: React.FC = () => {
@@ -22,6 +23,8 @@ const App: React.FC = () => {
         {currentView === View.DISCOVER && <Discover onNavigate={setCurrentView} />}
         {currentView === View.BOOKING && <BookingView onNavigate={setCurrentView} />}
       </main>
+
+      <WhatsAppButton />
     </div>
   );
 };
